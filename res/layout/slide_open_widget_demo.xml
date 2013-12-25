@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res/com.morgan.demo" >
+
+    <com.morgan.library.widget.SlideUpOpenWidget
+        android:id="@+id/slidePageWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:coverImage="@drawable/image" >
+    </com.morgan.library.widget.SlideUpOpenWidget>
+
+</LinearLayout>

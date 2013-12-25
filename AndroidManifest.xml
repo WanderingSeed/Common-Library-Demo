@@ -1,0 +1,60 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.morgan.demo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+    <application
+        android:name=".DemoApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_label" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".slidemenu.SlideMenuWithViewPagerDemo"
+            android:exported="false"
+            android:label="SlideMenu" >
+            <intent-filter>
+                <action android:name="com.morgan.demo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PullToRefreshListViewDemo"
+            android:exported="false"
+            android:label="PullToRefreshlistView" >
+            <intent-filter>
+                <action android:name="com.morgan.demo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SlideOpenWidgetDemo"
+            android:exported="false"
+            android:label="SlideUpOpenWidget" >
+            <intent-filter>
+                <action android:name="com.morgan.demo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TouchZoomImageViewDemo"
+            android:exported="false"
+            android:label="TouchZoomImageView" >
+            <intent-filter>
+                <action android:name="com.morgan.demo" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
