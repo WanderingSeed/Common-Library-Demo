@@ -20,6 +20,7 @@
 			<groupId>morgan</groupId>
 			<artifactId>CommonLibrary</artifactId>
 			<version>1.0</version>
+			<type>apklib</type>
 		</dependency>
 		
 		<dependency>
@@ -42,9 +43,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>universal-image-loader</groupId>
+			<groupId>com.nostra13.universalimageloader</groupId>
 			<artifactId>universal-image-loader</artifactId>
-			<version>1.8.6</version>
+			<version>1.8.4</version>
 		</dependency>
 
 	</dependencies>
