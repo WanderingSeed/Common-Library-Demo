@@ -8,6 +8,11 @@
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" /> 
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.morgan.demo"
+        android:label="common demo" />
 
     <application
         android:name=".DemoApplication"
@@ -55,6 +60,16 @@
                 <action android:name="com.morgan.demo" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".JSIteractWithJavaDemo"
+            android:exported="false"
+            android:label="HtmlIteractWithJavaDemo" >
+            <intent-filter>
+                <action android:name="com.morgan.demo" />
+            </intent-filter>
+        </activity>
+
+        <uses-library android:name="android.test.runner" />
     </application>
 
 </manifest>
