@@ -20,10 +20,9 @@ public class BaseActivity extends Activity {
         switch (item.getItemId()) {
         case android.R.id.home:
             finish();
-            break;
+            return true;
         default:
-            break;
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 }

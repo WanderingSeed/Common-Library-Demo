@@ -32,7 +32,7 @@ public class MainActivity extends ListActivity {
         if (isFirst) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             AppUtils.installLauncherShortCut(intent, getString(R.string.app_label),
-                    BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+                    BitmapFactory.decodeResource(getResources(), R.drawable.icon_launcher));
         }
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(FIRST_TIME_START, false);
