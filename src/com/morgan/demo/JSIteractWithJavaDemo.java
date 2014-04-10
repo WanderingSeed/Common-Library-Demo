@@ -1,6 +1,8 @@
 package com.morgan.demo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -8,6 +10,7 @@ public class JSIteractWithJavaDemo extends BaseActivity {
 
     private WebView mWebView;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,7 +18,7 @@ public class JSIteractWithJavaDemo extends BaseActivity {
         mWebView = (WebView) findViewById(R.id.webView);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.addJavascriptInterface(new Object() {
-            @SuppressWarnings("unused")
+            @JavascriptInterface //这个annotation用于兼容17以后的版本
             public void onClick() {
                 Toast.makeText(JSIteractWithJavaDemo.this, "you success",
                         Toast.LENGTH_LONG).show();

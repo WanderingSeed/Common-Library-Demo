@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.morgan.demo.mockdata.MainActivityListAdapter;
 import com.morgan.library.utils.AppUtils;
@@ -52,5 +53,18 @@ public class MainActivity extends ListActivity {
         Intent intent = new Intent();
         intent.setComponent(new ComponentName(resolveInfo.packageName, resolveInfo.name));
         startActivity(intent);
+    }
+
+    private long exitTime = 0;
+
+    @Override
+    public void onBackPressed() {
+        if ((System.currentTimeMillis() - exitTime) > 3000) {
+            Toast.makeText(getApplicationContext(), R.string.another_click_exit_app, Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 }
