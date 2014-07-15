@@ -2,11 +2,11 @@ package com.morgan.demo.slidemenu;
 
 import android.os.Bundle;
 
-import com.morgan.demo.BaseFragmentActivity;
+import com.morgan.demo.BaseActionBarFragmentActivity;
 import com.morgan.demo.R;
 import com.morgan.library.widget.slidemenu.SlideMenu;
 
-public class BaseSlideMenuActivity extends BaseFragmentActivity {
+public class BaseSlideMenuActivity extends BaseActionBarFragmentActivity {
     private SlideMenu mSlideMenu;
 
     @Override

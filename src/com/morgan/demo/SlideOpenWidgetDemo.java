@@ -2,7 +2,7 @@ package com.morgan.demo;
 
 import android.os.Bundle;
 
-public class SlideOpenWidgetDemo extends BaseActivity {
+public class SlideOpenWidgetDemo extends BaseActionBarActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -2,7 +2,6 @@ package com.morgan.demo;
 
 import java.util.List;
 
-import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -16,55 +15,82 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.morgan.demo.data.Constants;
 import com.morgan.demo.mockdata.MainActivityListAdapter;
+import com.morgan.library.app.AppManager;
 import com.morgan.library.utils.AppUtils;
 
-public class MainActivity extends ListActivity {
-    private PackageManager mPackageManager;
-    private static final String FIRST_TIME_START = "isfrist";
-    private static final String DEMO_ACTION = "com.morgan.demo";
+/**
+ * 程序主界面，包含跳忘各个模块的入口。
+ * 
+ * @author JiGuoChao
+ * 
+ * @version 1.0
+ * 
+ * @date 2014-7-15
+ */
+public class MainActivity extends BaseActionBarListActivity {
+	private PackageManager mPackageManager;
+	private long mExitTime = 0; // 记录第一次按键时间，连续按两次back键退出程序
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        SharedPreferences preferences = getSharedPreferences("first", Context.MODE_PRIVATE);
-        boolean isFirst = preferences.getBoolean(FIRST_TIME_START, true);
-        if (isFirst) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            AppUtils.installLauncherShortCut(intent, getString(R.string.app_label),
-                    BitmapFactory.decodeResource(getResources(), R.drawable.icon_launcher));
-        }
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(FIRST_TIME_START, false);
-        editor.commit();
-        mPackageManager = getPackageManager();
-        List<ResolveInfo> activities = mPackageManager.queryIntentActivities(makeDemoActivityIntent(),
-                PackageManager.GET_META_DATA);
-        getListView().setAdapter(new MainActivityListAdapter(this, activities, mPackageManager));
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		firstStartCheck();
+		mPackageManager = getPackageManager();
+		List<ResolveInfo> activities = mPackageManager.queryIntentActivities(
+				createDemoActivityIntent(), PackageManager.GET_META_DATA);
+		getListView().setAdapter(
+				new MainActivityListAdapter(this, activities, mPackageManager));
+	}
 
-    protected Intent makeDemoActivityIntent() {
-        return new Intent(DEMO_ACTION);
-    }
+	/**
+	 * 检查是否为第一次运行，如果是则在桌面添加一个快捷方式。
+	 */
+	private void firstStartCheck() {
+		SharedPreferences preferences = getSharedPreferences(
+				Constants.PREFERENCE_NAME, Context.MODE_PRIVATE);
+		boolean isFirst = preferences.getBoolean(Constants.FIRST_TIME_START,
+				true);
+		if (isFirst) { // 第一次启动则在桌面添加快捷方式
+			Intent intent = new Intent(getApplicationContext(),
+					MainActivity.class);
+			AppUtils.installLauncherShortCut(intent,
+					getString(R.string.app_label), BitmapFactory
+							.decodeResource(getResources(),
+									R.drawable.icon_launcher));
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.putBoolean(Constants.FIRST_TIME_START, false);
+			editor.commit();
+		}
+	}
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        ActivityInfo resolveInfo = ((ResolveInfo) l.getItemAtPosition(position)).activityInfo;
-        Intent intent = new Intent();
-        intent.setComponent(new ComponentName(resolveInfo.packageName, resolveInfo.name));
-        startActivity(intent);
-    }
+	/**
+	 * 创建一个包含{@link Constants#DEMO_ACTION}的Intent。
+	 * 
+	 * @return
+	 */
+	protected Intent createDemoActivityIntent() {
+		return new Intent(Constants.DEMO_ACTION);
+	}
 
-    private long exitTime = 0;
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		ActivityInfo resolveInfo = ((ResolveInfo) l.getItemAtPosition(position)).activityInfo;
+		Intent intent = new Intent();
+		intent.setComponent(new ComponentName(resolveInfo.packageName,
+				resolveInfo.name));
+		startActivity(intent);
+	}
 
-    @Override
-    public void onBackPressed() {
-        if ((System.currentTimeMillis() - exitTime) > 3000) {
-            Toast.makeText(getApplicationContext(), R.string.another_click_exit_app, Toast.LENGTH_SHORT).show();
-            exitTime = System.currentTimeMillis();
-        } else {
-            finish();
-            System.exit(0);
-        }
-    }
+	@Override
+	public void onBackPressed() {
+		if ((System.currentTimeMillis() - mExitTime) > 3000) {
+			Toast.makeText(getApplicationContext(),
+					R.string.another_click_exit_app, Toast.LENGTH_SHORT).show();
+			mExitTime = System.currentTimeMillis();
+		} else {
+			AppManager.getAppManager().AppExit(MainActivity.this);
+		}
+	}
 }

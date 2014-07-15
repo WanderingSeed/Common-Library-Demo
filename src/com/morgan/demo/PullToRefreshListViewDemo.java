@@ -14,7 +14,7 @@ import com.morgan.library.widget.PullToRefreshListView;
 import com.morgan.library.widget.PullToRefreshListView.OnLoadDataListener;
 import com.morgan.library.widget.PullToRefreshListView.OnRefreshDataListener;
 
-public class PullToRefreshListViewDemo extends BaseActivity {
+public class PullToRefreshListViewDemo extends BaseActionBarActivity {
 
     private List<String> mList = new ArrayList<String>();
     private TextView mHeaderTopView, mHeadBootomView;

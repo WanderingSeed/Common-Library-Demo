@@ -6,7 +6,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class JSIteractWithJavaDemo extends BaseActivity {
+public class JSIteractWithJavaDemo extends BaseActionBarActivity {
 
     private WebView mWebView;
 
