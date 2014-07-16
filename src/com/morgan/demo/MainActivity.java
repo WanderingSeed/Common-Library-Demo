@@ -90,7 +90,7 @@ public class MainActivity extends BaseActionBarListActivity {
 					R.string.another_click_exit_app, Toast.LENGTH_SHORT).show();
 			mExitTime = System.currentTimeMillis();
 		} else {
-			AppManager.getAppManager().AppExit(MainActivity.this);
+			AppManager.getInstance().exitApp(MainActivity.this);
 		}
 	}
 }
