@@ -1,4 +1,4 @@
-package com.morgan.demo;
+package com.morgan.demo.ui;
 
 import java.util.List;
 
@@ -15,8 +15,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.morgan.demo.R;
+import com.morgan.demo.adapter.MainActivityListAdapter;
+import com.morgan.demo.base.BaseActionBarListActivity;
 import com.morgan.demo.data.Constants;
-import com.morgan.demo.mockdata.MainActivityListAdapter;
 import com.morgan.library.app.AppManager;
 import com.morgan.library.utils.AppUtils;
 
@@ -70,7 +72,7 @@ public class MainActivity extends BaseActionBarListActivity {
 	 * 
 	 * @return
 	 */
-	protected Intent createDemoActivityIntent() {
+	public Intent createDemoActivityIntent() {
 		return new Intent(Constants.DEMO_ACTION);
 	}
 

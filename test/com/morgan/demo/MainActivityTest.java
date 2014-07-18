@@ -1,6 +1,7 @@
 package com.morgan.demo;
 
 import com.morgan.demo.data.Constants;
+import com.morgan.demo.ui.MainActivity;
 
 import android.test.ActivityInstrumentationTestCase2;
 

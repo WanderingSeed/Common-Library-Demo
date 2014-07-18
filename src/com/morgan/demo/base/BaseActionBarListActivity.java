@@ -1,4 +1,4 @@
-package com.morgan.demo;
+package com.morgan.demo.base;
 
 import com.morgan.library.app.BaseListActivity;
 

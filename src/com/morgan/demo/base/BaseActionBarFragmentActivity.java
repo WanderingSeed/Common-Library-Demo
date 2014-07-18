@@ -1,13 +1,13 @@
-package com.morgan.demo;
+package com.morgan.demo.base;
 
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.morgan.library.app.BaseActivity;
+import com.morgan.library.app.BaseFragmentActivity;
 
 /**
- * 带有ActionBar的Activity的基类，并添加了ActionBar中返回键的响应事件。
+ * 带有ActionBar的FragmentActivity的基类，并添加了ActionBar中返回键的响应事件。
  * 
  * @author JiGuoChao
  * 
@@ -15,7 +15,7 @@ import com.morgan.library.app.BaseActivity;
  * 
  * @date 2014-7-15
  */
-public class BaseActionBarActivity extends BaseActivity {
+public class BaseActionBarFragmentActivity extends BaseFragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,10 @@ public class BaseActionBarActivity extends BaseActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			finish();
-			return true;
+			break;
 		default:
-			return super.onOptionsItemSelected(item);
+			break;
 		}
+		return super.onOptionsItemSelected(item);
 	}
 }

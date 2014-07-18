@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">libraryDemo</string>
     <string name="app_label">Library Demo</string>
+    <string name="success">success</string>
     <string name="another_click_exit_app">再按一次退出程序 </string>
+    <string name="no_data_now">暂无数据</string>
 </resources>

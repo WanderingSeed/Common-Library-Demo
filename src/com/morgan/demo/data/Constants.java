@@ -1,5 +1,14 @@
 package com.morgan.demo.data;
 
+/**
+ * 用于存放程序中的一些常量。
+ * 
+ * @author JiGuoChao
+ * 
+ * @version 1.0
+ * 
+ * @date 2014-7-18
+ */
 public class Constants {
 	/**
 	 * 用于存放是否为第一次启动的布尔值在SharePreference中的key
