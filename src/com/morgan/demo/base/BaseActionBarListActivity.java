@@ -1,6 +1,6 @@
 package com.morgan.demo.base;
 
-import com.morgan.library.app.BaseListActivity;
+import com.morgan.library.activity.BaseListActivity;
 
 import android.app.ActionBar;
 import android.os.Bundle;

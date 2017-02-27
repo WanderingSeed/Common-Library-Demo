@@ -19,7 +19,7 @@ import com.morgan.demo.R;
 import com.morgan.demo.adapter.MainActivityListAdapter;
 import com.morgan.demo.base.BaseActionBarListActivity;
 import com.morgan.demo.data.Constants;
-import com.morgan.library.app.AppManager;
+import com.morgan.library.app.ActicityManager;
 import com.morgan.library.utils.AppUtils;
 
 /**
@@ -57,10 +57,10 @@ public class MainActivity extends BaseActionBarListActivity {
 		if (isFirst) { // 第一次启动则在桌面添加快捷方式
 			Intent intent = new Intent(getApplicationContext(),
 					MainActivity.class);
-			AppUtils.installLauncherShortCut(intent,
+			AppUtils.installLaunchShortCut(intent,
 					getString(R.string.app_label), BitmapFactory
 							.decodeResource(getResources(),
-									R.drawable.icon_launcher));
+									R.drawable.icon_launcher), false);
 			SharedPreferences.Editor editor = preferences.edit();
 			editor.putBoolean(Constants.FIRST_TIME_START, false);
 			editor.commit();
@@ -92,7 +92,7 @@ public class MainActivity extends BaseActionBarListActivity {
 					R.string.another_click_exit_app, Toast.LENGTH_SHORT).show();
 			mExitTime = System.currentTimeMillis();
 		} else {
-			AppManager.getInstance().exitApp(MainActivity.this);
+			ActicityManager.getInstance().exitApp(MainActivity.this);
 		}
 	}
 }

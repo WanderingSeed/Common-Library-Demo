@@ -4,7 +4,7 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.morgan.library.app.BaseActivity;
+import com.morgan.library.activity.BaseActivity;
 
 /**
  * 带有ActionBar的Activity的基类，并添加了ActionBar中返回键的响应事件。

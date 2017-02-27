@@ -4,7 +4,7 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.morgan.library.app.BaseFragmentActivity;
+import com.morgan.library.activity.BaseFragmentActivity;
 
 /**
  * 带有ActionBar的FragmentActivity的基类，并添加了ActionBar中返回键的响应事件。
